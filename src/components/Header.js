@@ -7,12 +7,12 @@ import { Bounded } from "./Bounded";
 import { Heading } from "./Heading";
 import { HorizontalDivider } from "./HorizontalDivider";
 
-const Profile = ({ name, description, profilePicture }) => {
+const Profile = ({ name, description, profilePicture, ...props }) => {
   return (
     <div className="px-4">
       <div className="grid max-w-lg grid-cols-1 justify-items-center gap-8">
         <PrismicNextLink href="/" tabIndex="-1">
-          <div className="relative h-40 w-40 overflow-hidden rounded-full bg-slate-300">
+          <div className={`relative h-48 w-48 overflow-hidden profile-picture-container${props.rounded ? ' rounded-full' : ''}${props.clipped ? ' bg-slate-300' : ''}`}>
             {prismic.isFilled.image(profilePicture) && (
               <PrismicNextImage
                 field={profilePicture}
@@ -59,8 +59,8 @@ export const Header = ({
 }) => {
   return (
     <Bounded as="header">
-      <div className="grid grid-cols-1 justify-items-center gap-20">
-        <nav>
+      <div className="grid grid-cols-1 justify-items-center gap-10">
+        <nav className="sticky">
           <ul className="flex flex-wrap justify-center gap-10">
             <NavItem>
               <Link href="/">
