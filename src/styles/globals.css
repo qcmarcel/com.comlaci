@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes move-to-left {
+    0% {
+        top: initial;
+        /* left: 0; */
+        transform: /* translateX(0) */ scale(1);
+        position:relative
+    }
+    90% {     
+        /* top: 0; */  
+        position: relative;     
+        /* left: 50%; */  
+        margin-left: -45vw; 
+        transform: /* translateX(calc(-100vw*2/3)) */ scale(0.8);
+    }
+    90.1% {     
+        /* top: 0; */                  
+        left: 0;
+        position: fixed;     
+        /* left: 50%; */  
+        margin-left: -45vw;
+        transform: /* translateX(calc(-100vw*2/3)) */ scale(0.8);
+    }
+    100% {
+        top: 0;                
+        left: 0;
+        margin-top: -4vw;
+        /* margin-top: -16vw; */
+        margin-left: 3vw;
+        position: fixed;
+        z-index: 100;
+        transform: /* translateX(calc(-10%)) */ scale(0.5);
+        background-color: #ebeff3;
+    }
+}
+
+@media (width < 768px) {
+    @keyframes move-to-left {
+        0% {
+            top: initial;
+            /* left: 0; */
+            transform: /* translateX(0) */ scale(1);
+            position:relative
+        }
+        90% {     
+            /* top: 0; */  
+            position: relative;     
+            /* left: 50%; */
+            margin-left: -50vw;   
+            transform: /* translateX(calc(-100vw*2/3)) */ scale(0.8);
+        }
+        90.1% {     
+            /* top: 0; */                
+            left: 0; 
+            position: fixed;     
+            /* left: 50%; */
+            margin-left: -50vw;   
+            transform: /* translateX(calc(-100vw*2/3)) */ scale(0.8);
+        }
+        100% {
+            top: 0;
+            margin-top: -7vw;                
+            left: 0;
+            /* margin-top: -16vw; */
+            margin-left: -7vw;
+            position: fixed;
+            z-index: 100;
+            transform: /* translateX(calc(-10%)) */ scale(0.5);
+            background-color: #ebeff3;
+        }
+    }
+}
+
+.profile-picture-container {
+    animation: move-to-left 1s ease-in-out;
+    animation-timeline: view();
+    animation-fill-mode: both;
+    animation-range: 60% 80%
+}
+
+@keyframes sticky-navigation {
+    from{
+        position: relative;        
+        background: transparent;
+        width: inherit;
+        padding: auto;
+    }
+    to {
+        position: fixed;
+        top: 0;
+        padding: 36px 0px;
+        width: 100%;
+        background: #ebeff3;
+        z-index: 99;
+    }
+}
+
+nav.sticky {    
+    animation: sticky-navigation 1s ease-in-out;
+    animation-timeline: view();
+    animation-fill-mode: both;
+    animation-range: 90% 100%
+}
